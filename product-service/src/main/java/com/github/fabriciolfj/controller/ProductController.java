@@ -1,6 +1,6 @@
 package com.github.fabriciolfj.controller;
 
-import com.github.fabriciolfj.business.QueryProduct;
+import com.github.fabriciolfj.business.usecase.GetProduct;
 import com.github.fabriciolfj.business.usecase.ProductCreate;
 import com.github.fabriciolfj.controller.dto.ProductRequest;
 import com.github.fabriciolfj.controller.mapper.ProductDTOMapper;
@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class ProductController {
 
     private final ProductCreate productCreate;
-    private final QueryProduct queryProduct;
+    private final GetProduct getProduct;
 
     @Post
     public HttpResponse create(final ProductRequest request) {
@@ -28,7 +28,7 @@ public class ProductController {
 
     @Get("/{code}")
     public HttpResponse find(@PathVariable("code") final String code) {
-        var response = ProductDTOMapper.toResponse(queryProduct.findCode(code));
+        var response = ProductDTOMapper.toResponse(getProduct.execute(code));
 
         return HttpResponse.ok(response);
     }
