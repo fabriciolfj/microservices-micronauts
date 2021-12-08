@@ -1,0 +1,23 @@
+micronaut:
+  application:
+    name: productService
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/postgres
+    driverClassName: org.postgresql.Driver
+    username: admin
+    password: admin
+    dialect: POSTGRES
+jpa:
+  default:
+    packages-to-scan:
+      - 'com.github.fabriciolfj.providers.database.model'
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: none
+        show_sql: true
+flyway:
+  datasources:
+    default:
+      enabled: true
