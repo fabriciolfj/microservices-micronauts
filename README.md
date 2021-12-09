@@ -30,3 +30,4 @@ public class InventoryNotFoundExceptionHandler implements ExceptionHandler<Inven
 }
 
 ```
+### Segurança
