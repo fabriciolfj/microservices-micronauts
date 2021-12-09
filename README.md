@@ -30,4 +30,14 @@ public class InventoryNotFoundExceptionHandler implements ExceptionHandler<Inven
 }
 
 ```
-### Segurança
+### Arquitetura de eventos
+- a arquitetura de eventos precisa por uma comunicação assincrona, reativa a alguma mudança de estado que precisa ser notificado.
+- para atender esses pontos, possui os elementos abaixo:
+  - event: é uma mudança de estado no sistema que precisar ser notificado.
+  - event producer: serviço ou sistema que detecta a mudança de estado e gera um evento para outros serviços 
+  - consumidor de event: serviço ou sistema que recebe o evento, que é notificado
+  - event brocker: o intermediário entre quem produz e recebe o evento
+
+#### Estratégia de implementação
+- pub/sub: um produtor cria os eventos, o broker encaminha esses eventos para suas filas, os consumidores destas filas os recebem
+- streaming de eventos: o produtor de eventos os encaminha ao broker, o brocker os inserem em uma transmissão de eventos, o consumidor fica "ouvindo" essa transmissão, e pegando os eventos que vão chegando.
