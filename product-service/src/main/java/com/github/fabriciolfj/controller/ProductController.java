@@ -9,7 +9,11 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.PathVariable;
 import io.micronaut.http.annotation.Post;
+import io.micronaut.security.annotation.Secured;
+import io.micronaut.security.rules.SecurityRule;
 import lombok.RequiredArgsConstructor;
+
+import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @Controller("/api/v1/products")
@@ -19,7 +23,7 @@ public class ProductController {
     private final GetProduct getProduct;
 
     @Post
-    public HttpResponse create(final ProductRequest request) {
+    public HttpResponse create(@Valid final ProductRequest request) {
         var product = ProductDTOMapper.toEntity(request);
         var response = ProductDTOMapper.toResponse(productCreate.execute(product));
 
@@ -27,6 +31,7 @@ public class ProductController {
     }
 
     @Get("/{code}")
+    //@Secured(SecurityRule.IS_ANONYMOUS)
     public HttpResponse find(@PathVariable("code") final String code) {
         var response = ProductDTOMapper.toResponse(getProduct.execute(code));
 

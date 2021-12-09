@@ -4,5 +4,5 @@ import com.github.fabriciolfj.entities.Product;
 
 public interface SaveProduct {
 
-    String save(final Product product);
+    void save(final Product product);
 }

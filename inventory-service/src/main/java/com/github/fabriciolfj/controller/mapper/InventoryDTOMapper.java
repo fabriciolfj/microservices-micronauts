@@ -1,9 +1,6 @@
 package com.github.fabriciolfj.controller.mapper;
 
-import com.github.fabriciolfj.controller.dto.InventoryRequestEntranceDTO;
-import com.github.fabriciolfj.controller.dto.InventoryRequestExitDTO;
-import com.github.fabriciolfj.controller.dto.InventoryResponseCodeDTO;
-import com.github.fabriciolfj.controller.dto.InventoryResponseDTO;
+import com.github.fabriciolfj.controller.dto.*;
 import com.github.fabriciolfj.entities.Inventory;
 
 import java.time.LocalDateTime;
@@ -23,6 +20,16 @@ public class InventoryDTOMapper {
 
     public static InventoryResponseDTO toResponse(final Inventory inventory) {
         return InventoryResponseDTO.builder()
+                .balance(inventory.getBalance())
+                .dateMov(inventory.getDateMov().toString())
+                .entrance(inventory.getEntrance())
+                .exit(inventory.getExit())
+                .build();
+    }
+
+    public static InventoryResponseV2DTO toResponseV2(final Inventory inventory) {
+        return InventoryResponseV2DTO.builder()
+                .code(inventory.getCode())
                 .balance(inventory.getBalance())
                 .dateMov(inventory.getDateMov().toString())
                 .entrance(inventory.getEntrance())

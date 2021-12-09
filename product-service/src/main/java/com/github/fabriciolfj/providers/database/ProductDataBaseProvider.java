@@ -44,11 +44,11 @@ public class ProductDataBaseProvider implements DeleteProduct, QueryProduct, Sav
 
     @Override
     @Transactional(Transactional.TxType.REQUIRED)
-    public String save(final Product product) {
+    public void save(final Product product) {
         log.info("Save product: {}", product);
         var productModel = ProductModelMapper.toModel(product,
                 categoryDataBaseProvider.findModel(product.getCodeCategory()));
 
-        return repository.save(productModel).getCode();
+        repository.save(productModel);
     }
 }

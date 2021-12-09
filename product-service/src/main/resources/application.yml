@@ -1,6 +1,30 @@
 micronaut:
+  server:
+    port: 9090
   application:
     name: productService
+  router:
+    versioning:
+      enabled: true
+      default-version: 1
+      parameter:
+        enabled: false
+        names: 'v,api-version'
+      header:
+        enabled: true
+        names:
+          - 'X-API-VERSION'
+          - 'Accept-Version'
+  security:
+    enabled: true
+    authentication: session
+    session:
+      enabled: true
+    endpoints:
+      login:
+        enabled: true
+      logout:
+        enabled: true
 datasources:
   default:
     url: jdbc:postgresql://localhost:5432/postgres
@@ -21,3 +45,14 @@ flyway:
   datasources:
     default:
       enabled: true
+
+inventory:
+  host: http://localhost:8080
+
+identity-store:
+  users:
+    fabricio: 1234
+    test : 1234
+  roles:
+    fabricio: ADMIN
+    test: VIEW

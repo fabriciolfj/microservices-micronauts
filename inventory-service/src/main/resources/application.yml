@@ -1,6 +1,12 @@
 micronaut:
+  server:
+    port: 8081
   application:
     name: inventoryService
+  route:
+    versioning:
+      enabled: true
+      default-version: 1
 datasources:
   default:
     url: jdbc:postgresql://localhost:5432/postgres

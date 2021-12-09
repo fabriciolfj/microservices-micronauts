@@ -18,6 +18,7 @@ public class ProductDTOMapper {
                 .code(UUID.randomUUID().toString())
                 .price(request.getPrice())
                 .name(request.getName())
+                .quantity(request.getQuantity())
                 .category(CategoryDTOMapper.toEntity(request.getCategory()))
                 .build();
     }

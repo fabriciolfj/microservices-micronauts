@@ -15,6 +15,7 @@ public class Product {
 
     private String code;
     private String name;
+    private Long quantity;
     private BigDecimal price;
     private Category category;
 
