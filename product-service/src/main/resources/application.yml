@@ -16,21 +16,25 @@ micronaut:
           - 'X-API-VERSION'
           - 'Accept-Version'
   security:
-    enabled: true
-    authentication: session
-    session:
-      enabled: true
-    endpoints:
-      login:
+    authentication: bearer
+    token:
+      jwt:
         enabled: true
-      logout:
-        enabled: true
+        signatures.jwks.keycloak:
+          url: http://localhost:8080/auth/realms/master/protocol/openid-connect/certs
+    oauth2.clients.keycloak:
+      grant-type: password
+      client-id: client-product
+      client-secret: e77a2b1a-4e38-428e-8351-d9a5d6e16eb3
+      authorization:
+        url: http://localhost:8080/auth/realms/master/protocol/openid-connect/auth
 datasources:
   default:
     url: jdbc:postgresql://localhost:5432/postgres
     driverClassName: org.postgresql.Driver
     username: admin
     password: admin
+    schema-generate: CREATE_DROP
     dialect: POSTGRES
 jpa:
   default:
@@ -48,12 +52,4 @@ flyway:
       enabled: true
 
 inventory:
-  host: http://localhost:8080
-
-identity-store:
-  users:
-    fabricio: 1234
-    test : 1234
-  roles:
-    fabricio: ADMIN
-    test: VIEW
+  host: http://localhost:8081

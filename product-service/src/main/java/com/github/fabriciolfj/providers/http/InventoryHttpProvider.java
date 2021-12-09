@@ -2,7 +2,6 @@ package com.github.fabriciolfj.providers.http;
 
 import com.github.fabriciolfj.business.InventaryCreate;
 import com.github.fabriciolfj.entities.Product;
-import com.github.fabriciolfj.providers.http.dto.InventoryRequestDTO;
 import com.github.fabriciolfj.providers.http.dto.InventoryResponseDTO;
 import com.github.fabriciolfj.providers.http.mapper.InventoryMapper;
 import io.micronaut.context.annotation.Value;

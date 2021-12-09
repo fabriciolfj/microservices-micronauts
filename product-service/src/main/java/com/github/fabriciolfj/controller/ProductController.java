@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import javax.validation.Valid;
 
 @RequiredArgsConstructor
+@Secured(SecurityRule.IS_AUTHENTICATED)
 @Controller("/api/v1/products")
 public class ProductController {
 

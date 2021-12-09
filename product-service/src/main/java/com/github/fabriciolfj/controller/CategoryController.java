@@ -9,9 +9,12 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.PathVariable;
 import io.micronaut.http.annotation.Post;
+import io.micronaut.security.annotation.Secured;
+import io.micronaut.security.rules.SecurityRule;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@Secured(SecurityRule.IS_AUTHENTICATED)
 @Controller("/api/v1/category")
 public class CategoryController {
 
