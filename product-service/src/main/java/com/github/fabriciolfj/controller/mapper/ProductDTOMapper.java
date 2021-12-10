@@ -2,6 +2,7 @@ package com.github.fabriciolfj.controller.mapper;
 
 import com.github.fabriciolfj.controller.dto.ProductRequest;
 import com.github.fabriciolfj.controller.dto.ProductResponse;
+import com.github.fabriciolfj.controller.dto.ProductUpdateQuantityRequest;
 import com.github.fabriciolfj.entities.Product;
 
 import java.util.UUID;
@@ -10,6 +11,14 @@ public class ProductDTOMapper {
 
     private ProductDTOMapper() {
 
+    }
+
+    public static Product toEntity(final ProductUpdateQuantityRequest request) {
+        return Product
+                .builder()
+                .code(request.getCode())
+                .quantity(request.getQuantity())
+                .build();
     }
 
     public static Product toEntity(final ProductRequest request) {

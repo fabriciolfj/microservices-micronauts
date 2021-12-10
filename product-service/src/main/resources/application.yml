@@ -25,12 +25,12 @@ micronaut:
     oauth2.clients.keycloak:
       grant-type: password
       client-id: client-product
-      client-secret: e77a2b1a-4e38-428e-8351-d9a5d6e16eb3
+      client-secret: 0550ddf4-517a-4704-9c0b-e9f548c83b15
       authorization:
         url: http://localhost:8080/auth/realms/master/protocol/openid-connect/auth
 datasources:
   default:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5433/postgres
     driverClassName: org.postgresql.Driver
     username: admin
     password: admin
@@ -52,4 +52,7 @@ flyway:
       enabled: true
 
 inventory:
-  host: http://localhost:8081
+  host: http://localhost:9091
+
+jpa.default.properties.hibernate.hbm2ddl.auto: update
+kafka.bootstrap.servers: localhost:9092

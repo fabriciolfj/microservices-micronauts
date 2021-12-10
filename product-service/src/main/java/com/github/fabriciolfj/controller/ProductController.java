@@ -2,13 +2,12 @@ package com.github.fabriciolfj.controller;
 
 import com.github.fabriciolfj.business.usecase.GetProduct;
 import com.github.fabriciolfj.business.usecase.ProductCreate;
+import com.github.fabriciolfj.business.usecase.ProductUpdate;
 import com.github.fabriciolfj.controller.dto.ProductRequest;
+import com.github.fabriciolfj.controller.dto.ProductUpdateQuantityRequest;
 import com.github.fabriciolfj.controller.mapper.ProductDTOMapper;
 import io.micronaut.http.HttpResponse;
-import io.micronaut.http.annotation.Controller;
-import io.micronaut.http.annotation.Get;
-import io.micronaut.http.annotation.PathVariable;
-import io.micronaut.http.annotation.Post;
+import io.micronaut.http.annotation.*;
 import io.micronaut.security.annotation.Secured;
 import io.micronaut.security.rules.SecurityRule;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +21,13 @@ public class ProductController {
 
     private final ProductCreate productCreate;
     private final GetProduct getProduct;
+    private final ProductUpdate productUpdate;
+
+    @Put("/quantity")
+    public HttpResponse updateQuantity(final ProductUpdateQuantityRequest request) {
+        productUpdate.execute(ProductDTOMapper.toEntity(request));
+        return HttpResponse.noContent();
+    }
 
     @Post
     public HttpResponse create(@Valid final ProductRequest request) {
