@@ -41,3 +41,11 @@ public class InventoryNotFoundExceptionHandler implements ExceptionHandler<Inven
 #### Estratégia de implementação
 - pub/sub: um produtor cria os eventos, o broker encaminha esses eventos para suas filas, os consumidores destas filas os recebem
 - streaming de eventos: o produtor de eventos os encaminha ao broker, o brocker os inserem em uma transmissão de eventos, o consumidor fica "ouvindo" essa transmissão, e pegando os eventos que vão chegando.
+
+#### Configuração externalizada
+- micronaut possui recursos para trabalhar com configuração externalizada, com apoio do Consul da hashicorp.
+- dentro do consult, utiliza-se o recurso chave/valor.
+
+#### Gateway, retry e fallback
+- para retentativas podemos utilizar o Retryable e para circuit breaker o CircuitBreaker
+- caso utilize o httpclient junto com um discovery, não precisamos especificar o ip e port do servico chamado, apenas indicar seu nome no client id. Exemplo:  @Client(id = "product-service")
