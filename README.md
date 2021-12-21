@@ -45,3 +45,7 @@ public class InventoryNotFoundExceptionHandler implements ExceptionHandler<Inven
 #### Configuração externalizada
 - micronaut possui recursos para trabalhar com configuração externalizada, com apoio do Consul da hashicorp.
 - dentro do consult, utiliza-se o recurso chave/valor.
+
+#### Gateway, retry e fallback
+- para retentativas podemos utilizar o Retryable e para circuit breaker o CircuitBreaker
+- caso utilize o httpclient junto com um discovery, não precisamos especificar o ip e port do servico chamado, apenas indicar seu nome no client id. Exemplo:  @Client(id = "product-service")
