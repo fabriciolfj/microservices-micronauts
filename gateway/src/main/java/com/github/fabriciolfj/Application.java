@@ -1,11 +1,14 @@
 package com.github.fabriciolfj;
 
 import io.micronaut.runtime.Micronaut;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.*;
+import io.swagger.v3.oas.annotations.info.*;
 
 @OpenAPIDefinition(
-        info = @Info(title = "inventory-service", version = "1.0", description = "Inventory apis")
+    info = @Info(
+            title = "gateway",
+            version = "0.0"
+    )
 )
 public class Application {
 

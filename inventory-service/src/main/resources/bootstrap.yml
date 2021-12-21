@@ -1,0 +1,16 @@
+micronaut:
+  server:
+    port: 9091
+  application:
+    name: inventory
+  config-client:
+    enabled: true
+consul:
+  client:
+    defaultZone: ${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}
+    config:
+      enabled: true
+      format: yaml
+      path: "config/inventory/"
+    registration:
+      enabled: true

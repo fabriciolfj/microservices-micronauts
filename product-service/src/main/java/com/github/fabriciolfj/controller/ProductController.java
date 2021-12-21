@@ -38,7 +38,7 @@ public class ProductController {
     }
 
     @Get("/{code}")
-    //@Secured(SecurityRule.IS_ANONYMOUS)
+    @Secured(SecurityRule.IS_ANONYMOUS)
     public HttpResponse find(@PathVariable("code") final String code) {
         var response = ProductDTOMapper.toResponse(getProduct.execute(code));
 

@@ -69,6 +69,11 @@ services:
     depends_on:
       - zookeeper
 
+  consul:
+    image: consul
+    ports:
+      - "8500:8500"
+
 networks:
   kafka-net:
     driver: bridge

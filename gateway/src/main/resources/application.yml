@@ -1,0 +1,14 @@
+micronaut:
+  server:
+    port: 9093
+  application:
+    name: gateway
+hystrix.stream.enabled: false
+ribbon:
+  VipAddress: test
+  ServerListRefreshInterval: 2000
+consul:
+  client:
+    defaultZone: ${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}
+    registration:
+      enabled: true
