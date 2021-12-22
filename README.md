@@ -52,3 +52,9 @@ public class InventoryNotFoundExceptionHandler implements ExceptionHandler<Inven
 
 #### Implantação da aplicação
 - micronauts utiliza o jib, uma lib da google que facilita a criação de imagem docker, de aplicações feitas em java (maven ou gradle).
+
+### Observabilidade
+- Observabilidade em micro serviços é a junção de:
+  - monitoramento: ver o desempenho do microservice e se ele esta up
+  - logging centralizado: armazenar os registros dos serviços
+  - tracing: ver o percurso de uma requisição, por quais serviços ela passou
