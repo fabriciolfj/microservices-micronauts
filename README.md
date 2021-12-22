@@ -49,3 +49,12 @@ public class InventoryNotFoundExceptionHandler implements ExceptionHandler<Inven
 #### Gateway, retry e fallback
 - para retentativas podemos utilizar o Retryable e para circuit breaker o CircuitBreaker
 - caso utilize o httpclient junto com um discovery, não precisamos especificar o ip e port do servico chamado, apenas indicar seu nome no client id. Exemplo:  @Client(id = "product-service")
+
+#### Implantação da aplicação
+- micronauts utiliza o jib, uma lib da google que facilita a criação de imagem docker, de aplicações feitas em java (maven ou gradle).
+
+### Observabilidade
+- Observabilidade em micro serviços é a junção de:
+  - monitoramento: ver o desempenho do microservice e se ele esta up
+  - logging centralizado: armazenar os registros dos serviços
+  - tracing: ver o percurso de uma requisição, por quais serviços ela passou
