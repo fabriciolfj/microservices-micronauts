@@ -151,6 +151,22 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
+        <version>3.1.4</version>
+        <configuration>
+          <from>
+            <image>openjdk:11</image>
+          </from>
+          <to>
+            <image>inventory</image>
+          </to>
+          <container>
+            <creationTime>${maven.build.timestamp}</creationTime>
+          </container>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>io.micronaut.build</groupId>
         <artifactId>micronaut-maven-plugin</artifactId>
       </plugin>

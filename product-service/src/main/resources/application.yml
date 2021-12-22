@@ -1,5 +1,7 @@
 consul:
   client:
+    default-zone:
+      - consul:8500
     registration:
       enabled: true
 
@@ -26,16 +28,16 @@ micronaut:
       jwt:
         enabled: true
         signatures.jwks.keycloak:
-          url: http://localhost:8080/auth/realms/master/protocol/openid-connect/certs
+          url: http://keycloak:8080/auth/realms/master/protocol/openid-connect/certs
     oauth2.clients.keycloak:
       grant-type: password
       client-id: client-product
       client-secret: 0550ddf4-517a-4704-9c0b-e9f548c83b15
       authorization:
-        url: http://localhost:8080/auth/realms/master/protocol/openid-connect/auth
+        url: http://keycloak:8080/auth/realms/master/protocol/openid-connect/auth
 datasources:
   default:
-    url: jdbc:postgresql://localhost:5433/postgres
+    url: jdbc:postgresql://db:5432/postgres
     driverClassName: org.postgresql.Driver
     username: admin
     password: admin
@@ -57,7 +59,7 @@ flyway:
       enabled: true
 
 inventory:
-  host: http://localhost:9091
+  host: http://inventory:9091
 
 jpa.default.properties.hibernate.hbm2ddl.auto: update
-kafka.bootstrap.servers: localhost:9092
+kafka.bootstrap.servers: kafka:9092
