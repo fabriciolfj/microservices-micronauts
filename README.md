@@ -58,3 +58,10 @@ public class InventoryNotFoundExceptionHandler implements ExceptionHandler<Inven
   - monitoramento: ver o desempenho do microservice e se ele esta up
   - logging centralizado: armazenar os registros dos serviços
   - tracing: ver o percurso de uma requisição, por quais serviços ela passou
+
+
+#### Logging elk
+- é um agragador de registros, que funciona da seguinte forma:
+  - logstash coleta os logs, filtra e os transforma
+  - elasticsearch armazena os logs
+  - kibana é a UI que o usuário utiliza para visualizar os logs 
