@@ -7,6 +7,7 @@ import com.github.fabriciolfj.providers.http.mapper.InventoryMapper;
 import io.micronaut.context.annotation.Value;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.client.HttpClient;
+import io.micronaut.tracing.annotation.ContinueSpan;
 import jakarta.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,6 +22,7 @@ public class InventoryHttpProvider implements InventaryCreate {
     private String host;
 
     @Override
+    @ContinueSpan
     public void setInventory(final Product product) throws MalformedURLException {
         var dto = InventoryMapper.toDto(product);
         var client = HttpClient.create(new URL(host));

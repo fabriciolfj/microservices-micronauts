@@ -24,3 +24,11 @@ datasources:
     dialect: POSTGRES
 jpa.default.properties.hibernate.hbm2ddl.auto: update
 kafka.bootstrap.servers: kafka:9092
+
+tracing:
+  zipkin:
+    http:
+      url: http://zipkin:9411
+    enabled: true
+    sampler:
+      probability: 1

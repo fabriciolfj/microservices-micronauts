@@ -10,6 +10,7 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
 import io.micronaut.security.annotation.Secured;
 import io.micronaut.security.rules.SecurityRule;
+import io.micronaut.tracing.annotation.NewSpan;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.Valid;
@@ -23,6 +24,7 @@ public class ProductController {
     private final GetProduct getProduct;
     private final ProductUpdate productUpdate;
 
+    @NewSpan
     @Put("/quantity")
     public HttpResponse updateQuantity(final ProductUpdateQuantityRequest request) {
         productUpdate.execute(ProductDTOMapper.toEntity(request));
@@ -30,6 +32,7 @@ public class ProductController {
     }
 
     @Post
+    @NewSpan
     public HttpResponse create(@Valid final ProductRequest request) {
         var product = ProductDTOMapper.toEntity(request);
         var response = ProductDTOMapper.toResponse(productCreate.execute(product));

@@ -11,6 +11,8 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.PathVariable;
 import io.micronaut.http.annotation.Post;
+import io.micronaut.tracing.annotation.ContinueSpan;
+import io.micronaut.tracing.annotation.NewSpan;
 import lombok.RequiredArgsConstructor;
 
 
@@ -23,6 +25,7 @@ public class InventoryController {
 
     @Version("2")
     @Post("/exit")
+    @ContinueSpan
     public HttpResponse createExit(final InventoryRequestExitDTO dto) {
         var inv = saveInventory.save(InventoryDTOMapper.toEntity(dto));
         var resp = InventoryDTOMapper.toResponse(inv);
@@ -30,6 +33,7 @@ public class InventoryController {
         return HttpResponse.created(resp);
     }
 
+    @ContinueSpan
     @Post("/entrance")
     public HttpResponse createEntrance(final InventoryRequestEntranceDTO dto) {
         var inv = saveInventory.save(InventoryDTOMapper.toEntity(dto));
@@ -38,6 +42,7 @@ public class InventoryController {
         return HttpResponse.created(resp);
     }
 
+    @NewSpan
     @Version("1")
     @Get("/{code}")
     public HttpResponse find(@PathVariable("code") final String code) {
@@ -47,6 +52,7 @@ public class InventoryController {
         return HttpResponse.ok(resp);
     }
 
+    @NewSpan
     @Version("2")
     @Get("/{code}")
     public HttpResponse findV2(@PathVariable("code") final String code) {
