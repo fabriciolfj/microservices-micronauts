@@ -65,3 +65,8 @@ public class InventoryNotFoundExceptionHandler implements ExceptionHandler<Inven
   - logstash coleta os logs, filtra e os transforma
   - elasticsearch armazena os logs
   - kibana é a UI que o usuário utiliza para visualizar os logs 
+
+#### Tracing
+- um tracing é a representação do percurso de uma requisição a uma malha de serviços
+- um tracing é composto por spans, cada span é um traço de dados que passou por um componente ou serviço
+- um span pode ter outros spans abaixo dele
